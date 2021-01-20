@@ -1,0 +1,22 @@
+<%= render partial: 'shared/header' %>
+<div class='row d-flex justify-content-center border border-secondary'>
+  <% @books.each do|book| %>
+  <div class='book col-5 p-4 m-3 border border-secondary '>
+    <div class="book-image">
+    <%= image_tag book.image_link, class: 'thumbnail' if book.image_link.present? %>
+    <%= image_tag 'no_image.jpg', class: 'thumbnail border' if book.image_link.blank? %>
+    </div>
+    <div class="book-title">
+    <%= book.title %>
+    </div>
+    <div class='book-author'>
+    <%= book.authors %>
+    </div>
+    <div class='book-isbn'>
+    <%= book.isbn %>
+    </div>
+  </div>
+  <% end %>
+</div>
+<%= paginate @books %>
+
