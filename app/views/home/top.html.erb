@@ -1,1 +1,5 @@
 <%= render partial: 'shared/header' %>
+<%= form_with url: books_search_path, local: true, method: :get, class: "search-form" do |f| %>
+  <%= f.text_field :keyword, placeholder: "書籍を検索する", class: "search-input" %>
+  <%= f.submit "検索", class: "search-btn" %>
+<% end %>
