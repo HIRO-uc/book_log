@@ -15,6 +15,19 @@
     <div class='book-isbn'>
     <%= book.isbn %>
     </div>
+
+    <div class="book-form">
+    <%= form_with url: books_path, local: true do |form| %>
+    <%= hidden_field_tag :title, book.title %>
+    <%= hidden_field_tag :authors, book.authors %>
+    <%= hidden_field_tag :published_date, book.published_date %>
+    <%= hidden_field_tag :image_link, book.image_link %>
+    <%= hidden_field_tag :info_link, book.info_link %>
+    <%= hidden_field_tag :isbn, book.isbn %>
+    <%= form.submit "本棚に登録" %>
+    <% end %>
+    </div>
+
   </div>
   <% end %>
 </div>
