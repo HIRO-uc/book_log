@@ -3,5 +3,5 @@ class Book < ApplicationRecord
   belongs_to :status
   belongs_to :user
 
-  validates :isbn, :info_link, uniqueness: {scope: :user}
+  validates :info_link, uniqueness: {scope: :user}
 end
