@@ -18,14 +18,20 @@
 
     <div class="book-form">
     <%= form_with url: books_path, local: true do |form| %>
-    <%= hidden_field_tag :title, book.title %>
-    <%= hidden_field_tag :authors, book.authors %>
-    <%= hidden_field_tag :published_date, book.published_date %>
-    <%= hidden_field_tag :image_link, book.image_link %>
-    <%= hidden_field_tag :info_link, book.info_link %>
-    <%= hidden_field_tag :isbn, book.isbn %>
-    <%= hidden_field_tag :status_id, 0 %>
-    <%= form.submit "本棚に登録" %>
+      <%= hidden_field_tag :title, book.title %>
+      <%= hidden_field_tag :authors, book.authors %>
+      <%= hidden_field_tag :published_date, book.published_date %>
+      <%= hidden_field_tag :image_link, book.image_link %>
+      <%= hidden_field_tag :info_link, book.info_link %>
+      <%= hidden_field_tag :isbn, book.isbn %>
+      <%= hidden_field_tag :status_id, 0 %>
+      <%= hidden_field_tag :keyword, params[:keyword] %>
+      <%= hidden_field_tag :page, params[:page] %>
+      <% if user_signed_in? && Book.find_by(user_id: current_user.id, info_link: book.info_link, title: book.title).nil? %>
+        <%= form.submit "本棚に登録" %>
+      <% elsif user_signed_in? %>
+        <button>登録済み</button>
+      <% end %>
     <% end %>
     </div>
 
