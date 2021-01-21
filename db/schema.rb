@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2021_01_20_112416) do
     t.string "image_link"
     t.string "info_link"
     t.string "isbn"
+    t.integer "status_id"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
