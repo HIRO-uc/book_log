@@ -31,6 +31,8 @@
         <%= form.submit "本棚に登録" %>
       <% elsif user_signed_in? %>
         <button>登録済み</button>
+      <% else %>
+        <%= form.submit "本棚に登録" %>
       <% end %>
     <% end %>
     </div>
