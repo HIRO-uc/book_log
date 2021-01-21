@@ -24,6 +24,7 @@
     <%= hidden_field_tag :image_link, book.image_link %>
     <%= hidden_field_tag :info_link, book.info_link %>
     <%= hidden_field_tag :isbn, book.isbn %>
+    <%= hidden_field_tag :status_id, 0 %>
     <%= form.submit "本棚に登録" %>
     <% end %>
     </div>

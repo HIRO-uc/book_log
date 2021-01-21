@@ -8,6 +8,7 @@ class CreateBooks < ActiveRecord::Migration[6.0]
       t.string :image_link
       t.string :info_link
       t.string :isbn
+      t.integer :status_id
       t.references :user, foreign_key: true
       t.timestamps
     end
