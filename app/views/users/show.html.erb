@@ -2,7 +2,8 @@
 <h2>マイページ</h2>
 <div class="container-fluid d-flex flex-column align-items-center">
   <div class="user-info container border border-secondary">
-    <%= link_to image_tag(current_user.image, class: 'icon-lg'), user_icon_edit_path(current_user) %>
+    <%= link_to image_tag(@user.image, class: 'icon-lg'), user_icon_edit_path(@user) %>
+    <%= @user.id %>
   </div>
   <div class="book-shelf row border border-secondary">
   <% @books.each do |book| %>
