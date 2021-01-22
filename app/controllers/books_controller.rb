@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!, except: [:search]
-  before_action :current_path_book, only: [:update, :show, :move_to_top]
+  before_action :current_path_book, only: [:update, :show, :destroy, :move_to_top]
   before_action :move_to_top, except: [:search, :create]
 
   def search
@@ -20,6 +20,11 @@ class BooksController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+    @book.destroy
+    redirect_to user_path(current_user)
   end
 
   private
