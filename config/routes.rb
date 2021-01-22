@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: 'home#top'
   get 'books/search'
   resources :books, only: [:create]
+  resources :users, only: :show
 end
