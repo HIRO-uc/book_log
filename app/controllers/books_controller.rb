@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, except: [:search]
+  before_action :current_path_book, only: [:update, :show, :move_to_top]
+  before_action :move_to_top, except: [:search, :create]
 
   def search
     books = GoogleBooks.search("#{params[:keyword]}", {:count => 30}).to_a
@@ -13,13 +15,11 @@ class BooksController < ApplicationController
   end
 
   def update
-    @book = Book.find(params[:id])
     @book.update(edit_book_params)
     redirect_to user_path(current_user)
   end
 
   def show
-    @book = Book.find(params[:id])
   end
 
   private
@@ -29,5 +29,13 @@ class BooksController < ApplicationController
 
   def edit_book_params
     params.require(:book).permit(:status_id)
+  end
+
+  def current_path_book
+    @book = Book.find(params[:id])
+  end
+
+  def move_to_top
+    redirect_to root_path if current_user.id != @book.user_id
   end
 end
