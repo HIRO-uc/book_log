@@ -1,11 +1,28 @@
 <%= link_to 'トップページ', root_path %>
 <h2>マイページ</h2>
 <div class="container-fluid d-flex flex-column align-items-center">
-  <div class="user-info container border border-secondary">
+  <div class="user-info col-lg-7 col-sm-9 col-10 p-5 border border-secondary">
+    <div class="user-icon">
+      <% if @user.profile.image.present? %>
+      <%= image_tag @user.profile.image, class: 'icon-lg'%>
+      <% else %>
+      <%= image_tag 'user-default.png', class: 'icon-lg' %>
+      <% end %>
+    </div>
+    <div class="nickname">
+      <%= @user.profile.nickname %>
+    </div>
+    <div class="self-introduction">
+      <%= @user.profile.self_introduction %>
+    </div>
+    <div class="website">
+      <%= @user.profile.website %>
+    </div>
+    <%= link_to 'プロフィールを編集', "/users/#{@user.id}/profiles/#{@user.profile.id}/edit" %>
   </div>
-  <div class="book-shelf row border border-secondary">
+  <div class="book-shelf col-lg-7 col-sm-9 col-10 p-2 row border border-secondary">
   <% @books.each do |book| %>
-    <div class='book p-3 m-4'>
+    <div class='book p-3 my-2 d-flex flex-column align-items-center col-lg-3 col-md-4 col-sm-6 col-6'>
       <div class="book-image">
         <% if book.image_link.present? %>
         <%= link_to image_tag(book.image_link, class: 'thumbnail-sm shadow-sm'), book_path(book) %>
@@ -17,11 +34,11 @@
         <% end %>
       <% end %>
       </div>
-      <%if book.status_id != 0 %>
-        <div class="book-status badge badge-success">
-          <%= book.status.name %>
-        </div>
-      <% end %>
+      <%# <%if book.status_id != 0 %>
+        <%# <div class="book-status badge badge-success"> %>
+          <%# <%= book.status.name %>
+        <%# </div> %>
+      <%# <% end %>
     </div>
   <% end %>
   </div>
