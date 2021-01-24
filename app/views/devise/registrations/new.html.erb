@@ -8,9 +8,7 @@
     </div>
     <%= render 'shared/error_messages', model:@user %>
     <%= f.fields_for :profile do |f| %>
-    <%= f.text_field :website, class: 'hidden'%>
-    <%= f.text_field :self_introduction, class: 'hidden'%>
-    <%= f.text_field :image, class: 'hidden'%>
+    
     <div class='form-group'>
       <div class='form-text-wrap'>
         <label class="form-text">ニックネーム</label>
