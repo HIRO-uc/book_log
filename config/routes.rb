@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   root to: 'home#top'
   get 'books/search'
   resources :books, only: [:create, :show, :update, :destroy] 
-  resources :users, only: :show 
+  resources :users, only: :show do
+    resources :profiles, only: [:edit, :update]
+  end
 end
