@@ -3,7 +3,5 @@ Rails.application.routes.draw do
   root to: 'home#top'
   get 'books/search'
   resources :books, only: [:create, :show, :update, :destroy] 
-  resources :users, only: :show do
-    get 'icon_edit'
-  end
+  resources :users, only: :show 
 end
