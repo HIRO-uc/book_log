@@ -16,6 +16,8 @@
 
  @import 'bootstrap';
 
+
+
 .thumbnail-lg {
   width: 150px;
   height: 200px;
@@ -35,10 +37,6 @@
   border-radius: 80px;
 }
 
-.book-shelf {
-  width: 53vw;
-}
-
-.user-info {
-  width: 53vw;
+.hidden {
+  display: none;
 }
