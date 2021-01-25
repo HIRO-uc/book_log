@@ -16,7 +16,7 @@
       <%= @user.profile.self_introduction %>
     </div>
     <div class="website">
-      <%= @user.profile.website %>
+      <%= link_to @user.profile.website if @user.profile.website.present? %>
     </div>
     <%= link_to 'プロフィールを編集', "/users/#{@user.id}/profiles/#{@user.profile.id}/edit" %>
   </div>
