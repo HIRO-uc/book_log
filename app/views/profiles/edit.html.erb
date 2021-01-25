@@ -2,14 +2,24 @@
   <h2>プロフィール編集</h2>
   <%= form_with model: @profile, url: user_profile_path(@profile), local: true do |form| %>
   <div class='form-group d-flex flex-column align-items-center'>
-    <label class="form-text">ユーザーアイコン</label>
+    <div class="user-icon my-4" id="user-icon">
+      <% if @profile.image.present? %>
+      <%= image_tag @profile.image, class: 'icon-lg'%>
+      <% else %>
+      <%= image_tag 'user-default.png', class: 'icon-lg' %>
+      <% end %>
+    </div>
     <%= form.file_field :image %>
   </div>
-  <div class='form-group d-flex flex-column align-items-center'>
-    <label class="form-text">自己紹介</label>
-    <%= form.text_field :self_introduction %>
+  <div class='form-group d-flex flex-column'>
+    <label class="form-text">ニックネーム</label>
+    <%= form.text_field :nickname %>
   </div>
-  <div class='form-group d-flex flex-column align-items-center'>
+  <div class='form-group d-flex flex-column'>
+    <label class="form-text">自己紹介</label>
+    <%= form.text_area :self_introduction %>
+  </div>
+  <div class='form-group d-flex flex-column'>
     <label class="form-text">ウェブサイト</label>
     <%= form.text_field :website %>
   </div>
