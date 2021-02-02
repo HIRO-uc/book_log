@@ -1,15 +1,19 @@
 <header>
-<div class="container-fruid d-flex justify-content-around">
-  <div class='header-left'>
-    <%= link_to 'Topページ', root_path %>
+<div class="container-fruid d-flex justify-content-around py-4 mb-5 bg-info">
+  <div class='header-left d-flex'>
+    <%= link_to 'Topページ', root_path, class: 'mr-5 text-decoration-none text-dark'%>
+    <%= form_with url: books_search_path, local: true, method: :get, class: "search-form" do |f| %>
+    <%= f.text_field :keyword, placeholder: "書籍を検索する", class: "search-input" %>
+    <%= f.submit "検索", class: "search-btn" %>
+    <% end %>
   </div>
   <div class='header-right d-flex'>
     <% if user_signed_in? %>
-      <%= link_to 'マイページ', user_path(current_user.id) %>
-      <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
+      <%= link_to 'マイページ', user_path(current_user.id), class: 'text-decoration-none text-dark' %>
+      <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'text-decoration-none text-dark' %>
       <% else %>
-      <%= link_to '新規登録', new_user_registration_path %>
-      <%= link_to 'ログイン', new_user_session_path %>
+      <%= link_to '新規登録', new_user_registration_path, class: 'text-decoration-none text-dark' %>
+      <%= link_to 'ログイン', new_user_session_path, class: 'text-decoration-none text-dark' %>
       <% end %>
   </div>
 </div>
