@@ -65,3 +65,4 @@ gem 'jquery-rails'
 gem 'active_hash'
 gem 'uglifier'
 gem 'react_on_rails'
+gem 'mini_racer', platforms: :ruby
