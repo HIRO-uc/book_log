@@ -1,5 +1,4 @@
-<%= link_to 'トップページ', root_path %>
-<h2>マイページ</h2>
+<%= render partial: 'shared/header' %>
 <div class="container-fluid d-flex flex-column align-items-center">
   <div class="user-info col-lg-7 col-sm-9 col-10 p-5 border border-secondary">
     <div class="user-icon">
@@ -25,14 +24,14 @@
     <div class='book p-3 my-2 d-flex flex-column align-items-center col-lg-3 col-md-4 col-sm-6 col-6'>
       <div class="book-image">
         <% if book.image_link.present? %>
-        <%= link_to image_tag(book.image_link, class: 'thumbnail-sm shadow-sm'), book_path(book) %>
-      <% else %>
-        <%= link_to book_path(book), class: 'text-decoration-none text-dark' do %>
-        <div class="thumbnail-sm shadow-sm border ">
-          <%= book.title %>
-        </div>
+          <%= link_to image_tag(book.image_link, class: 'thumbnail-sm shadow-sm'), book_path(book) %>
+        <% else %>
+          <%= link_to book_path(book), class: 'text-decoration-none text-dark' do %>
+            <div class="thumbnail-sm shadow-sm border ">
+              <%= book.title %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
       </div>
       <%# <%if book.status_id != 0 %>
         <%# <div class="book-status badge badge-success"> %>
