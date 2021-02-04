@@ -1,12 +1,10 @@
 class UsersController < ApplicationController
-  require 'json'
   before_action :authenticate_user!
   before_action :current_path_user
   before_action :move_to_top
 
   def show
     @books = @user.books
-    @jbooks = @books.to_json
   end
 
   private
