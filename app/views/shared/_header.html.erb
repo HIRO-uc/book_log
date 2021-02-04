@@ -1,19 +1,19 @@
 <header>
-<div class="container-fruid d-flex justify-content-around py-4 mb-5 bg-info">
-  <div class='header-left d-flex'>
-    <%= link_to 'Topページ', root_path, class: 'mr-5 text-decoration-none text-dark'%>
-    <%= form_with url: books_search_path, local: true, method: :get, class: "search-form" do |f| %>
-    <%= f.text_field :keyword, placeholder: "書籍を検索する", class: "search-input" %>
-    <%= f.submit "検索", class: "search-btn" %>
+<div class="container-fruid d-flex justify-content-between py-4 px-5  mb-5 bg-info shadow">
+  <div class='header-left  d-flex align-items-center'>
+    <%= link_to image_tag('logo.png', class: 'header-logo mr-5'), root_path %>
+    <%= form_with url: books_search_path, local: true, method: :get, class: "search-form d-flex" do |f| %>
+    <%= f.text_field :keyword, placeholder: "書籍を検索する", class: "search-input form-control mr-2 shadow" %>
+    <%= f.submit "検索", class: "search-btn btn btn-success btn btn-dark shadow" %>
     <% end %>
   </div>
-  <div class='header-right d-flex'>
+  <div class='header-right  d-flex align-items-center'>
     <% if user_signed_in? %>
-      <%= link_to 'マイページ', user_path(current_user.id), class: 'text-decoration-none text-dark' %>
-      <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'text-decoration-none text-dark' %>
+      <%= button_to 'マイページ', user_path(current_user.id), method: :get, class: 'mr-2 btn btn-success shadow' %>
+      <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'mr-5 btn btn-danger shadow' %>
       <% else %>
-      <%= link_to '新規登録', new_user_registration_path, class: 'text-decoration-none text-dark' %>
-      <%= link_to 'ログイン', new_user_session_path, class: 'text-decoration-none text-dark' %>
+      <%= button_to '新規登録', new_user_registration_path, method: :get, class: 'mr-2 btn btn-success shadow' %>
+      <%= button_to 'ログイン', new_user_session_path, method: :get, class: 'mr-5 btn btn-danger shadow' %>
       <% end %>
   </div>
 </div>
