@@ -64,3 +64,5 @@ gem 'bootstrap', '~> 4.5.0'
 gem 'jquery-rails'
 gem 'active_hash'
 gem 'uglifier'
+gem 'react_on_rails'
+gem 'mini_racer', platforms: :ruby
